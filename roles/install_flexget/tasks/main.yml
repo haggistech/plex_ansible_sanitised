@@ -1,0 +1,23 @@
+---
+# tasks file for install_flexget
+  - name: Update APT cache
+    command: apt-get update
+
+  - name: Install Python & pip
+    command: apt-get -y install python python-pip
+  
+  - name: Update Setup Tools
+    command: pip install --upgrade setuptools
+
+  - name: Install Flexget
+    command: pip install flexget transmissionrpc
+  
+  - name: Create Flexget Config Dir
+    file: path=/home/haggis/.flexget state=directory owner=haggis group=haggis mode=0755
+
+  - template: src="config.yml.j2" dest="/home/haggis/.flexget/config.yml" owner="haggis" group="haggis" mode="0644"
+  
+  - cron: name="Run Flexget" hour="0,6,12,18" user="haggis" job="/usr/local/bin/flexget execute"
+
+  - name: Restore DB
+    command: cp /home/2tb/Server\ Backup\ Files/db-config.sqlite /home/haggis/.flexget/db-config.sqlite

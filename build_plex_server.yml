@@ -1,0 +1,16 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+  - name: apply common configuration to all nodes
+    hosts: all
+    remote_user: root
+    vars:
+    roles:
+      - update_install_basics
+      - setup_mounts_fstab
+      - configure_nfs_shares
+      - install_flexget
+      - setup_transmission
+      - setup_plex_mediaserver
+      - setup_smb_shares
+    #  - setup_zoneminder

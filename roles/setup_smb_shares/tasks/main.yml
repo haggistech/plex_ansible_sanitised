@@ -1,0 +1,11 @@
+---
+# tasks file for setup_smb_shares
+- name: Install Samba
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - samba
+
+- name: Add Shares to smb.conf
+  lineinfile: dest=/etc/samba/smb.conf line='[TV-shows]\n   comment = TV Shows\n   read only = no\n   locking = no\n   path = /home/tv-shows\n   guest ok = yes\n[Movies]\n   comment = Movies and Music\n   read only = no\n   locking = no\n   path = /home/movies\n   guest ok = yes\n[Other]\n   comment = ROMS\n   read only = no\n   locking = no\n   path = /home/other\n   guest ok = yes\n[2tb]\n   comment = 2tb\n   read only = no\n   locking = no\n   path = /home/2tb\n   guest ok = yes\n[Music]\n   comment = 2tb\n   read only = no\n   locking = no\n   path = /home/music\n   guest ok = yes'

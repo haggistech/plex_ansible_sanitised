@@ -1,0 +1,247 @@
+templates:
+  tv:
+
+#    manipulate:
+#      - title: &the
+#          replace:
+#            regexp: '^The\W'
+#            format: ''
+#      - filename: *the
+#      - series_name: *the
+
+    private_torrents: no
+    verify_ssl_certificates: no
+
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 3 days
+          quality: 720p <720p 
+          set:
+            path: /home/tv-shows/Downloads/TV-Shows
+      tv:
+        - American Gods
+        - Arrow
+        - Baby Daddy
+        - Bull
+        - "Brooklyn Nine-Nine"
+        - Criminal Minds
+        - "Criminal Minds: Beyond Borders"
+        - Designated Survivor
+        - Game of Thrones
+        - Gotham
+        - Humans
+        - "Grey's Anatomy"
+        - "Last Man Standing (US)"
+        - Lethal Weapon
+        - Marvel's Agents of S.H.I.E.L.D
+        - "Masterchef (AU)"
+        - Modern Family
+        - NCIS
+        - NCIS Los Angeles
+        - New Girl
+        - Shades of Blue
+        - Supergirl
+        - Supernatural
+        - The 100
+        - The Big Bang Theory
+        - The Grand Tour
+        - The Odd Couple
+        - The Walking Dead
+        - This is us
+        - Total Divas
+        - Wentworth
+        - Westworld
+        - WWE Raw
+        - WWE Smackdown
+        - Taboo UK
+        - Sneaky Pete
+
+    transmission:
+      enabled: yes
+      host: localhost
+      port: 9091
+      username: 
+      password: 
+
+tasks:
+  American Gods:
+    priority: 2
+    rss: https://showrss.info/show/810.rss
+    template: tv
+
+  Arrow:
+    priority: 2
+    rss: https://showrss.info/show/117.rss
+    template: tv
+
+  Baby Daddy:
+    priority: 6
+    rss: https://showrss.info/show/336.rss
+    template: tv
+
+  Bull:
+    priority: 3
+    rss: https://showrss.info/show/633.rss
+    template: tv
+
+  "Brooklyn Nine-Nine":
+    priority: 4
+    rss: https://showrss.info/show/58.rss
+    template: tv
+
+  Criminal Minds:
+    priority: 4
+    rss: https://showrss.info/show/104.rss
+    template: tv
+
+  "Criminal Minds: Beyond Borders":
+    priority: 4
+    rss: https://showrss.info/show/495.rss
+    template: tv
+
+  Designated Survivor:
+    priority: 1
+    rss: https://showrss.info/show/635.rss
+    template: tv
+
+  Game of Thrones:
+    priority: 6
+    rss: https://showrss.info/show/262.rss
+    template: tv
+
+  Gotham:
+    priority: 6
+    rss: https://showrss.info/show/54.rss
+    template: tv
+
+  "Grey's Anatomy":
+    priority: 6
+    rss: https://showrss.info/show/9.rss
+    template: tv
+
+  Humans:
+    priority: 1
+    rss: https://showrss.info/show/298.rss
+    template: tv
+
+  "Last Man Standing (US)":
+    priority: 4
+    rss: https://showrss.info/show/37.rss
+    template: tv
+
+  Lethal Weapon:
+    priority: 4
+    rss: https://showrss.info/show/636.rss
+    template: tv
+
+  Marvel's Agents of S.H.I.E.L.D:
+    priority: 6
+    rss: https://showrss.info/show/71.rss
+    template: tv
+
+  "Masterchef (AU)":
+    priority: 1
+    rss: https://showrss.info/show/536.rss 
+    template: tv
+
+  Modern Family:
+    priority: 6
+    rss: https://showrss.info/show/75.rss 
+    template: tv
+
+  NCIS:
+    priority: 6
+    rss: https://showrss.info/show/69.rss
+    template: tv
+
+  NCIS Los Angeles:
+    priority: 6
+    rss: https://showrss.info/show/49.rss
+    template: tv
+
+  New Girl:
+    priority: 6
+    rss: https://showrss.info/show/265.rss
+    template: tv
+
+  Shades of Blue:
+    priority: 4
+    rss: https://showrss.info/show/429.rss
+    template: tv
+
+  Supergirl:
+    priority: 4
+    rss: https://showrss.info/show/140.rss
+    template: tv
+
+  Supernatural:
+    priority: 6
+    rss: https://showrss.info/show/144.rss
+    template: tv
+
+  The 100:
+    priority: 6
+    rss: https://showrss.info/show/279.rss
+    template: tv
+
+  The Big Bang Theory:
+    priority: 6
+    rss: https://showrss.info/show/48.rss
+    template: tv
+
+  The Grand Tour:
+    priority: 6
+    rss: https://showrss.info/show/707.rss
+    template: tv
+
+  The Odd Couple:
+    priority: 6
+    rss: https://showrss.info/show/516.rss
+    template: tv
+
+  The Walking Dead:
+    priority: 6
+    rss: https://showrss.info/show/127.rss
+    template: tv
+
+  This is us:
+    priority: 1
+    rss: https://showrss.info/show/634.rss
+    template: tv
+
+  Total Divas:
+    priority: 2
+    rss: https://showrss.info/show/542.rss
+    template: tv
+
+  Wentworth:
+    priority: 3
+    rss: https://showrss.info/show/162.rss
+    template: tv
+
+  Westworld:
+    priority: 4
+    rss: https://showrss.info/show/651.rss
+    template: tv
+
+  WWE Raw:
+    priority: 4
+    rss: https://showrss.info/show/190.rss
+    template: tv
+
+  WWE Smackdown:
+    priority: 4
+    rss: https://showrss.info/show/204.rss
+    template: tv
+
+  Taboo UK:
+    priority: 4
+    rss: https://showrss.info/show/737.rss
+    template: tv
+
+  Sneaky Pete:
+    priority: 4
+    rss: https://showrss.info/show/742.rss
+    template: tv

@@ -1,0 +1,10 @@
+---
+# tasks file for update_install_basics
+  - name: Update APT cache
+    command: apt-get update
+  
+  - name: Upgrade all packages to the latest version
+    command: apt-get upgrade
+
+  - name: Install NFS server and common
+    command: apt-get -y install nfs-common nfs-kernel-server rsync p7zip-full vim

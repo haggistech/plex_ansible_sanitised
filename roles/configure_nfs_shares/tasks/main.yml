@@ -1,0 +1,14 @@
+---
+# tasks file for configure_nfs_shares
+
+  - name: Add mount to /home/tv-shows
+    lineinfile: dest=/etc/exports line="/home/movies  *(rw,sync,no_root_squash)"
+
+  - name: Add mount to /home/tv-shows
+    lineinfile: dest=/etc/exports line="/home/tv-shows  *(rw,sync,no_root_squash)"
+    
+  - name: Add mount to /home/tv-shows
+    lineinfile: dest=/etc/exports line="/home/music  *(rw,sync,no_root_squash)"
+  
+  - name: Add mount to /home/tv-shows
+    lineinfile: dest=/etc/exports line="/home/2tb  *(rw,sync,no_root_squash)"

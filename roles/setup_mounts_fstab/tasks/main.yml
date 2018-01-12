@@ -1,0 +1,44 @@
+---
+# tasks file for setup_mounts_fstab
+  - name: Create Moun Points
+    file: path=/home/{{item}} state=directory owner=haggis group=haggis mode=0777
+    with_items:
+      - tv-shows
+      - movies
+      - 2tb
+      - music
+  
+  - name: Add mount to /home/tv-shows
+    lineinfile: dest=/etc/fstab line="UUID=9c657001-bc70-45d5-9675-79ccb3016758    /home/tv-shows    ext4    defaults    0    1"
+
+  - name: Add mount to /home/movies
+    lineinfile: dest=/etc/fstab line="UUID=8eff2fea-7beb-490a-939b-889b19187e9e    /home/movies    ext4    defaults    0    1"
+
+  - name: Add mount to /home/music
+    lineinfile: dest=/etc/fstab line="UUID=2205dcbc-10a9-4667-87d3-9ef4f313dac1    /home/music    ext4    defaults    0    1"
+
+  - name: Add mount to /home/2tb
+    lineinfile: dest=/etc/fstab line="UUID=aa5e11e5-238b-4344-ab21-47c924ea4921    /home/2tb    ext4    defaults    0    1"
+  
+  - name: Add Zoneminder Stuff
+    lineinfile: dest=/etc/fstab line="#Zone Minder"
+  
+  - name: Add mount to /home/2tb/zoneminder/images
+    lineinfile: dest=/etc/fstab line="#/home/2tb/zoneminder/images /var/cache/zoneminder/images none defaults,bind  0 2"
+  
+  - name: Add mount to /home/2tb/zoneminder/events
+    lineinfile: dest=/etc/fstab line="#/home/2tb/zoneminder/events /var/cache/zoneminder/events none defaults,bind 0 2"
+  
+  - name: Add mount to /home/2tb/zoneminder/videos
+    lineinfile: dest=/etc/fstab line="#/home/2tb/zoneminder/videos /var/cache/zoneminder/videos none defaults,bind  0 2"
+
+  - name: "Reboot"
+    shell: sleep 2 && shutdown -r now 'Reboot required'
+    become: true
+    async: 1
+    poll: 0
+    ignore_errors: true
+
+  - name: "Wait for reboot"
+    local_action: wait_for host={{ ansible_default_ipv4.address }} port=22 delay=10 state=started
+    become: false

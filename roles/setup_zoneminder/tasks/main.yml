@@ -1,0 +1,59 @@
+---
+# tasks file for setup_zoneminder
+
+  - name: Update APT cache
+    command: apt-get update
+
+  - name: debian | install plex dependencies
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - php
+      - mariadb-server 
+      - php-mysql
+      - apache2-mod-php7.0
+  
+  - name: Add mount to /home/2tb/zoneminder/events
+    lineinfile: dest=/etc/apt/sources.list line="deb http://httpredir.debian.org/debian jessie-backports main contrib non-free"
+
+  - name: Update APT cache
+    command: apt-get update
+
+  - name: Install Zoneminder
+    command: apt-get -y install zoneminder
+    ignore_errors: yes
+
+  - name: Install Zoneminder Erorrs
+    command: apt-get -y install -f
+
+  - name: Setup DB
+    command: cat /usr/share/zoneminder/db/zm_create.sql | sudo mysql --defaults-file=/etc/mysql/debian.cnf
+  
+  - name: Setup Auth
+    command: echo 'grant lock tables,alter,create,select,insert,update,delete,index on zm.* to 'zmuser'@localhost identified by "zmpass";'    | sudo mysql --defaults-file=/etc/mysql/debian.cnf mysql
+  
+  - name: Permissions
+    command: chgrp -c www-data /etc/zm/zm.conf
+
+  - name: Start ZM
+    command: systemctl enable zoneminder.service
+
+  - name: Configure Apache
+    command: a2enconf zoneminder
+
+  - name: Configure Apache
+    command: a2enmod cgi 
+
+  - name: Configure Apache
+    command: a2enmod rewrite
+
+  - name: Add mount to /home/2tb/zoneminder/videos
+    lineinfile: dest=/etc/php5/apache2/php.ini line="date.timezone = Europe/London"
+
+  - name: Start Apache
+    command: systemctl reload apache2
+
+  - name: Start ZoneMinder
+    command: systemctl start zoneminder
+

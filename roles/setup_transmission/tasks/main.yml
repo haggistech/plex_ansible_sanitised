@@ -1,0 +1,21 @@
+---
+# tasks file for setup_transmission
+  - name: Update APT cache
+    command: apt-get update
+
+  - name: Install Transmission
+    command: apt-get -y install transmission-common transmission-daemon
+
+  - name: Create Mount Points
+    file: path=/home/tv-shows/Downloads state=directory owner=haggis group=haggis mode=0777
+
+  - name: Create Mount Points
+    file: path=/home/tv-shows/Downloads/Incomplete state=directory owner=haggis group=haggis mode=0777
+  
+  - name: stop Transmission
+    command: systemctl stop transmission-daemon.service
+
+  - template: src="settings.json.j2" dest="/var/lib/transmission-daemon/.config/transmission-daemon/settings.json" owner="haggis" group="haggis" mode="0755"
+
+  - name: Start Transmission
+    command: systemctl start transmission-daemon.service
